@@ -60,51 +60,51 @@ celery → Worker for background tasks
 
 You can test all API endpoints using **Postman** or `curl`.
 
-### **Register Customer**
+###**Register Customer**
 ```bash
-POST /register/
-Content-Type: application/json
-
-{
+curl -X POST http://localhost:8000/register/ \
+-H "Content-Type: application/json" \
+-d '{
   "first_name": "Radhe",
   "last_name": "Shyam",
   "age": 25,
   "monthly_income": 50000,
   "phone_number": "9876543210"
-}
+}'
 ```
 ### **Loan Eligibility**
 ```bash
-POST /check-eligibility/
-Content-Type: application/json
-
-{
-  "customer_id": "<CUSTOMER_ID>",
+curl -X POST http://localhost:8000/check-eligibility/ \
+-H "Content-Type: application/json" \
+-d '{
+  "customer_id": "ff3f02d8-9794-49bb-ba6a-44af84d33bd2",
   "loan_amount": 500000,
   "tenure": 12,
   "interest_rate": 14
-}
+}'
 ```
 ### **Create Loan**
 ```bash
-POST /create-loan/
-Content-Type: application/json
-
-{
-  "customer_id": "<CUSTOMER_ID>",
+curl -X POST http://localhost:8000/create-loan/ \
+-H "Content-Type: application/json" \
+-d '{
+  "customer_id": "ff3f02d8-9794-49bb-ba6a-44af84d33bd2",
   "loan_id": "loan001",
   "loan_amount": 500000,
   "tenure": 12,
   "interest_rate": 14,
   "start_date": "2025-09-25",
   "end_date": "2026-09-25"
-}
+}'
 ```
 
 ###**View Loan**
 ```bash
-GET /view-loan/<loan_id>/
+curl -X GET http://localhost:8000/view-loan/loan001/
 ```
+
+Change ID based on Registered customer id generated 
+
 
 Author
 Aryan Mehra
